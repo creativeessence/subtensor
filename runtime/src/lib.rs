@@ -1878,6 +1878,39 @@ impl_runtime_apis! {
         }
     }
 
+    // Add this stub here for the hybrid node to compile
+    impl sp_consensus_babe::BabeApi<Block> for Runtime {
+        fn configuration() -> sp_consensus_babe::BabeConfiguration {
+            unimplemented!()
+        }
+
+        fn current_epoch_start() -> sp_consensus_babe::Slot {
+            unimplemented!()
+        }
+
+        fn current_epoch() -> sp_consensus_babe::Epoch {
+            unimplemented!()
+        }
+
+        fn next_epoch() -> sp_consensus_babe::Epoch {
+            unimplemented!()
+        }
+
+        fn generate_key_ownership_proof(
+            _slot: sp_consensus_babe::Slot,
+            _authority_id: sp_consensus_babe::AuthorityId,
+        ) -> Option<sp_consensus_babe::OpaqueKeyOwnershipProof> {
+            unimplemented!()
+        }
+
+        fn submit_report_equivocation_unsigned_extrinsic(
+            _equivocation_proof: sp_consensus_babe::EquivocationProof<<Block as BlockT>::Header>,
+            _key_owner_proof: sp_consensus_babe::OpaqueKeyOwnershipProof,
+        ) -> Option<()> {
+            unimplemented!()
+        }
+    }
+
     impl sp_consensus_aura::AuraApi<Block, AuraId> for Runtime {
         fn slot_duration() -> sp_consensus_aura::SlotDuration {
             sp_consensus_aura::SlotDuration::from_millis(Aura::slot_duration())
